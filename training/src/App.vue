@@ -29,7 +29,66 @@
 
 
     <div>
-      <ArticleVue title = "New Venue this new year" :likesNum="561" :isPublished="true" />
+      <!-- <ArticleVue title = "New Venue this new year" :likesNum="561" :isPublished="true" /> -->
+    </div>
+
+    <div>
+      <!-- <h1> Component App username : {{ name }} </h1>
+      <ComponentC/> -->
+    </div>
+
+    <div>
+      <!-- <SlotsVue> <h1> Welcome to my app </h1> </SlotsVue>
+      <SlotsVue> <h1> Welcome to my New app </h1> </SlotsVue>
+      <SlotsVue> <h1> Welcome to my older app </h1> </SlotsVue>
+      <SlotsVue> <h1> Welcome to my group app </h1> </SlotsVue>
+      <SlotsVue> <img src="@/assets/211.jpg" alt="Maize"> </SlotsVue> -->
+    </div>
+
+    <div>
+      <!-- <NamedSlots>
+        <template v-slot:header >
+          <h1>
+            My header
+          </h1>
+        </template>
+
+        <template v-slot:content >
+          <img src="@/assets/211.jpg" alt="Maize">
+
+        </template>
+
+        <template v-slot:footer >
+          <h1>
+            My Card Footer
+          </h1>
+        </template>
+      </NamedSlots> -->
+    </div>
+
+    <div>
+      <NameList>
+        <template v-slot:slot1 = "SlotsProps" >
+          {{ SlotsProps.firstName }} {{ SlotsProps.lastName }}
+        </template>
+      </NameList>
+
+      <hr>
+
+      <NameList>
+        <template v-slot:slot1 = "SlotsProps" >
+          {{ SlotsProps.lastName }}  {{ SlotsProps.firstName }}
+        </template>
+      </NameList>
+
+      <hr>
+
+      <NameList>
+        <template v-slot:slot1 = "SlotsProps" >
+          {{ SlotsProps.lastName }}
+        </template>
+      </NameList>
+      
     </div>
     
   </div>
@@ -38,7 +97,12 @@
 </template>
 
 <script>
-import ArticleVue from './components/PropsVue.vue';
+import NameList from './components/SlotsProps.vue';
+// import ComponentC from './components/ProvideInject/ComponentC.vue';
+// import NamedSlots from './components/NamedSlots.vue';
+// import SlotsVue from './components/SlotsVue.vue';
+
+// import ArticleVue from './components/PropsVue.vue';
 // import GreatVue from './components/GreatVue.vue';
 
 // import WatchersVue from './components/Watchers.vue';
@@ -59,7 +123,11 @@ export default {
     // ComputedProperties,
     // WatchersVue,
     // GreatVue,
-    ArticleVue,
+    // ArticleVue,
+    // ComponentC,
+    // SlotsVue,
+    // NamedSlots,
+    NameList,
   },
   data(){
     return {
@@ -67,6 +135,11 @@ export default {
       channel : "The GEEK",
     }
   },
+  provide()  {
+   return {
+    username : this.name,
+   } 
+  }
 }
 </script>
 
